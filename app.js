@@ -57,14 +57,8 @@ app.get("/api/schools/:type/:schoolName", async (res, req, next) => {
           const thirdCount = result[3].length;
           req.status(200).send({
             searchSchool,
-            class: {
-              first: firstClass,
-              count: firstCount,
-              second: secondClass,
-              count: secondCount,
-              third: thirdClass,
-              count: thirdCount,
-            },
+            class: [0, firstClass, secondClass, thirdClass],
+            count: [0, firstCount, secondCount, thirdCount],
           });
         });
       } else {
