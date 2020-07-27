@@ -29,7 +29,7 @@ app.get("/api/schools/:type/:schoolName", async (res, req, next) => {
       } else if (result.data === "검색된 학교가 없습니다.") {
         result_data = {
           reason: result.data,
-          reasonShort: "검색된 학교가 많습니다",
+          reasonShort: "검색된 학교가 없습니다",
           totalData: 0,
         };
       }
