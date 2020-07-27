@@ -50,12 +50,12 @@ app.get("/api/schools/:type/:schoolName", async (res, req, next) => {
         await timetable.setSchool(school);
         await timetable.getTimetable().then((result) => {
           const firstClass = result[1];
-          const firstCount = result[1].length;
+          const firstCount = Object.keys(result[1]).length;
           const secondClass = result[2];
-          const secondCount = result[2].length;
+          const secondCount = Object.keys(result[2]).length;
           const thirdClass = result[3];
-          const thirdCount = result[3].length;
-          console.log(firstCount, secondCount, thirdCount);
+          const thirdCount = Object.keys(result[3]).length;
+          console.log(typeof firstClass, secondCount, thirdCount);
           req.status(200).send({
             searchSchool,
             class: [0, firstClass, secondClass, thirdClass],
@@ -92,7 +92,7 @@ app.use((error, req, res, next) => {
   });
 });
 
-app.listen(process.env.PORT || 3000, (err) => {
+app.listen(process.env.PORT || 5000, (err) => {
   if (err) throw err;
-  console.log(`> Ready on http://localhost:${process.env.PORT || 3000}`);
+  console.log(`> Ready on http://localhost:${process.env.PORT || 5000}`);
 });
