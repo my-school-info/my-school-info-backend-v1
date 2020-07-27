@@ -36,7 +36,7 @@ app.get("/api/schools/:type/:schoolName", async (res, req, next) => {
 
     if (type === "search") {
       await req
-        .status(searchSchool ? 200 : 400)
+        .status(searchSchool ? 200 : 404)
         .send(
           searchSchool
             ? { searchSchool, school }
@@ -67,7 +67,7 @@ app.get("/api/schools/:type/:schoolName", async (res, req, next) => {
           });
         });
       } else {
-        await req.status(400).send({ searchSchool, result_data }).end();
+        await req.status(404).send({ searchSchool, result_data }).end();
       }
     } else {
       const error = new Error("잘못된 접근입니다");
