@@ -36,7 +36,7 @@ app.get("/api/schools/:type/:schoolName", async (res, req, next) => {
 
     if (type === "search") {
       await req
-        .status(searchSchool ? 200 : 404)
+        .status(200)
         .send(
           searchSchool
             ? { searchSchool, school }
@@ -67,11 +67,11 @@ app.get("/api/schools/:type/:schoolName", async (res, req, next) => {
           });
         });
       } else {
-        await req.status(404).send({ searchSchool, result_data }).end();
+        await req.status(200).send({ searchSchool, result_data }).end();
       }
     } else {
       const error = new Error("잘못된 접근입니다");
-      error.status = 400;
+      error.status = 404;
       next(error);
     }
   }
@@ -83,7 +83,7 @@ app.get("/", (res, req, next) => {
 
 app.use((res, req, next) => {
   const error = new Error("잘못된 접근입니다");
-  error.status = 400;
+  error.status = 404;
   next(error);
 });
 
