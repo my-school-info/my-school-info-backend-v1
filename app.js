@@ -30,6 +30,7 @@ app.get("/api/schools/:type/:schoolName", async (res, req, next) => {
         result_data = {
           reason: result.data,
           reasonShort: "검색된 학교가 많습니다",
+          totalData: 0,
         };
       }
     });
