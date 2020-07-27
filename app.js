@@ -1,5 +1,5 @@
 const express = require("express");
-const Timetable = require("comcigan-parser");
+const Timetable = require("comcigan-parser-edited");
 
 const timetable = new Timetable();
 const app = express();
