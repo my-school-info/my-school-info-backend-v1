@@ -1,8 +1,11 @@
 const express = require("express");
+const cors = require("cors");
 const Timetable = require("comcigan-parser-edited");
 
 const timetable = new Timetable();
 const app = express();
+
+app.use(cors());
 
 app.get("/api/schools/:type/:schoolName", async (res, req, next) => {
   const type = res.params.type;
@@ -72,6 +75,10 @@ app.get("/api/schools/:type/:schoolName", async (res, req, next) => {
       next(error);
     }
   }
+});
+
+app.get("/", (res, req, next) => {
+  req.status(200).end();
 });
 
 app.use((res, req, next) => {
