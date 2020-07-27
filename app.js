@@ -67,7 +67,7 @@ app.get("/api/schools/:type/:schoolName", async (res, req, next) => {
         await req.status(404).send({ searchSchool, result_data }).end();
       }
     } else {
-      const error = new Error("잘못된 접근이누");
+      const error = new Error("잘못된 접근입니다");
       error.status = 400;
       next(error);
     }
@@ -90,7 +90,7 @@ app.use((error, req, res, next) => {
   });
 });
 
-app.listen(5000, (err) => {
+app.listen(process.env.PORT || 3000, (err) => {
   if (err) throw err;
-  console.log("> Ready on http://localhost:5000");
+  console.log(`> Ready on http://localhost:${process.env.PORT || 3000}`);
 });
