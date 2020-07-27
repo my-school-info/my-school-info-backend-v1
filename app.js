@@ -55,6 +55,7 @@ app.get("/api/schools/:type/:schoolName", async (res, req, next) => {
           const secondCount = result[2].length;
           const thirdClass = result[3];
           const thirdCount = result[3].length;
+          console.log(firstCount, secondCount, thirdCount);
           req.status(200).send({
             searchSchool,
             class: [0, firstClass, secondClass, thirdClass],
